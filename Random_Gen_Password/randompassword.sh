@@ -1,8 +1,6 @@
 #!/bin/bash
 
 file1=/tmp/users
-file2=/tmp/users2
-ranfile=/tmp/random
 
 #request sudo perms
 echo Please enter sudo password
@@ -21,7 +19,7 @@ filename=/tmp/users.txt
 
 cat $file1 | grep ,,,:/home/ | cut -d: -f1 > $file2
 
-#cleanup 
+#cleanup
 mv $file2 $file1
 
 #print out users on sys
@@ -40,24 +38,24 @@ grep -Fx $usr $file1 > /dev/null
 if [ $? -eq 0 ]
 	then
 		echo "Ok lets reset" '"'$usr'"'
-		#Random number gen and move it to ranfile
+		#Random number gen
 password=$RANDOM
 
  	#random password var
 
-			#read ranfile and print out results into passwd
+			#pipe random number into passwd
 
 #workin
 	sudo yes $password | sudo passwd $usr
 
 
 		echo "The new password for" '"'"$usr"'"' "is :"
-		echo $password  
+		echo $password
 
 	else
 		#fail condition
 		echo No matching user found please try agin
-		
+
 fi
 
 #clean up
