@@ -15,7 +15,6 @@ cat /etc/passwd > $file1
 
 #Read and find REAL users in the user file
 
-filename=/tmp/users.txt
 
 
 cat $file1 | grep /bin/bash | cut -d: -f1 > $file2
