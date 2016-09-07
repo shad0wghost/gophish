@@ -1,6 +1,7 @@
 #!/bin/bash
 
 file1=/tmp/users
+file2=/tmp/users2
 
 #request sudo perms
 echo Please enter sudo password
@@ -70,8 +71,9 @@ password=$RANDOM
 		echo "The new password for" '"'"$usr"'"' "is :"
 		echo $password
 
-		
+
 fi
 
 #clean up
 rm -rf $file1
+rm -rf $file2
