@@ -54,8 +54,23 @@ password=$RANDOM
 
 	else
 		#fail condition
-		echo No matching user found please try agin
+		echo No matching user found but what the hell lets try :D
+		echo "Ok lets reset" '"'$usr'"'
+		#Random number gen
+password=$RANDOM
 
+ 	#random password var
+
+			#pipe random number into passwd
+
+#workin
+	sudo yes $password | sudo passwd $usr
+
+
+		echo "The new password for" '"'"$usr"'"' "is :"
+		echo $password
+
+		
 fi
 
 #clean up

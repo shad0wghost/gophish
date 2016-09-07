@@ -15,12 +15,12 @@ cat /etc/passwd > $file1
 
 #Read and find REAL users in the user file
 
-filename=/tmp/users.txt
 
 
-cat $file1 | grep ,,,:/home/ | cut -d: -f1 > $file2
 
-#cleanup 
+cat $file1 | grep /bin/bash | cut -d: -f1 > $file2
+
+#cleanup
 mv $file2 $file1
 
 #print out users on sys
@@ -44,8 +44,11 @@ if [ $? -eq 0 ]
 
 	else
 		#fail condition
-		echo No matching user found please try agin
-		
+		echo No matching user found but lets try it anyway :D
+
+		echo "Ok lets reset" '"'$usr'"'
+		#reset the pass
+		sudo passwd $usr
 fi
 
 #clean up
