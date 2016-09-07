@@ -18,7 +18,7 @@ cat /etc/passwd > $file1
 filename=/tmp/users.txt
 
 
-cat $file1 | grep ,,,:/home/ | cut -d: -f1 > $file2
+cat $file1 | grep /bin/bash | cut -d: -f1 > $file2
 
 #cleanup
 mv $file2 $file1
