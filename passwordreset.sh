@@ -23,7 +23,8 @@ cat $file1
 
 #Begin to reset password via imput
 	echo "Please tell me who's password you want to rest:"
-	echo "(or type "'"all"'" to change all users passwords simultaneously)"
+	echo "type "'"all"'" to change all users passwords simultaneously"
+	echo "type "'"random"'" to enter the random password generator"
 
 #user input
 read usr
@@ -37,6 +38,63 @@ echo "Resetting password for" '"'$usr'"'
 		#reset the pass
 		sudo passwd $usr
 		#if user types all
+elif [[ $usr = "random" ]]; then
+	cat $file1 | grep /bin/bash | cut -d: -f1 > $file2
+
+	#cleanup
+	mv $file2 $file1
+
+	#print out users on sys
+	echo Here are the users on the system:
+	cat $file1
+
+	#Begin to reset password via imput
+		echo "Please enter the user randomize:"
+	read usr
+
+
+
+	#Check if user is on the system
+	grep -Fx $usr $file1 > /dev/null
+
+	if [ $? -eq 0 ]
+		then
+			echo "Ok lets reset" '"'$usr'"'
+			#Random number gen
+	password=$RANDOM
+
+	 	#random password var
+
+				#pipe random number into passwd
+
+	#workin
+		sudo yes $password | sudo passwd $usr
+
+
+			echo "The new password for" '"'"$usr"'"' "is :"
+			echo $password
+
+		else
+			#fail condition
+			echo No matching user found
+			echo "Ok reseting" '"'$usr'"'
+			#Random number gen
+	password=$RANDOM
+
+	 	#random password var
+
+				#pipe random number into passwd
+
+	#workin
+		sudo yes $password | sudo passwd $usr
+
+
+			echo "The new password for" '"'"$usr"'"' "is :"
+			echo $password
+
+
+	fi
+
 elif [[ $usr = "all" ]]; then
 	#Make sure of choice
 		echo You have elected to change all of the users passwords are you sure? [yes/no]

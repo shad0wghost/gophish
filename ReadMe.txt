@@ -15,7 +15,7 @@ By Brandon
 How to use:
 1.) Run the script
 2.) Enter your sudo password
-3.) Select the user you would like to change or type all to change the password of everyone.
+3.) Select the user you would like to change. Type all to change the password of everyone. Type random to enter the password randomizer.
 4.) Enter the new password.
 
 
