@@ -1,6 +1,5 @@
 #!/bin/bash
 file1=/tmp/users
-file2=/tmp/users2
 
 #request sudo perms
 echo Please enter sudo password
@@ -8,14 +7,9 @@ sudo echo sudo password accepted
 echo -------------------------------------------------------
 echo "BRANDON'S SUPER PASSWORD RESET SCRIPT"
 echo -------------------------------------------------------
-#find and export users
-cat /etc/passwd > $file1
 
 #Read and find REAL users in the user file
-cat $file1 | grep /bin/bash | cut -d: -f1 > $file2
-
-#cleanup
-mv $file2 $file1
+cat /etc/passwd | grep /bin/bash | cut -d: -f1 > $file1
 
 #print out users on sys
 echo Here are the users on the system:
