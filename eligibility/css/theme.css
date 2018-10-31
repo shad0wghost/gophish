@@ -1,0 +1,159 @@
+@media all and (-ms-high-contrast:none)
+{
+    *::-ms-backdrop,body { display: block !important} /* IE11 */
+}
+
+/*override Bootstrap setting a font size to 0*/
+.input-group-btn {
+  font-size: inherit !important;
+}
+
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 400;
+  color: #45555f;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+hr {
+  border-top: 1px solid #ccc;
+}
+
+.confirm-date {
+  font-weight: bold;
+  font-size: 15px;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.content-emphasis{
+  text-decoration: underline;
+}
+
+.form-zip {
+  width: 115px;
+}
+
+.form-xs {
+  width: 115px;
+}
+
+.btn {
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #fc651b;
+    border-width: 0;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus {
+    color: #fff;
+    background-color: #EF4C1A;
+    border-width: 0;
+}
+
+.btn.disabled:hover, .btn[disabled]:hover {
+    background-color: #fc651b;
+}
+
+.header {
+    background: #981e32;
+    min-height: 45px;
+}
+
+.logo {
+    margin: 15px 0 0 -10px
+}
+
+.tagline {
+    float: right;
+}
+
+.alert {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.footer {
+    background: #555;
+    color: #e1e1e1;
+    font-size: 11px;
+    padding-top: 25px;
+    padding-bottom: 50px;
+    margin-top: 100px;
+}
+
+.error .card {
+    margin-top: 125px;
+}
+
+.footer .row {
+    margin-left:-30px;
+    margin-right:-30px;
+}
+
+.footer a, .footer a:hover, .footer a:active, .footer a:focus, .footer a:active:focus {
+  color: #ffffff;
+}
+
+.footer-sections {
+  margin-top: 10px;
+}
+
+.basic {
+  background-color: #eee;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.container-main{
+   flex: 1;
+}
+.card {
+  background-color: #fff;
+  margin-top: 75px;
+  border: 1px solid #dddddd;
+}
+
+/*CAPTCHA*/
+.g-recaptcha {margin-bottom: 15px;}
+
+
+/*Responsive Stuff*/
+@media screen and (max-width: 992px) {
+    body {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .basic {
+      background-color: #ffffff;
+    }
+    .header, .footer {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    .logo {
+      margin: 15px 0 0 0px
+    }
+    .tagline {
+      float: none;
+    }
+    .footer {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .card {
+      border: none;
+    }
+
+}

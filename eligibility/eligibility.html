@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Getting Started</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script type="text/javascript">
+		window.onloadCallback = function() {
+			$(function() {
+
+	            $.ajax({
+	                headers: {
+	                    'Accept': 'text/plain',
+	                    'Content-Type': 'text/plain'
+	                },
+	                data: null,
+	                type: 'GET',
+	                url: '../eligibility/rest/2.0/recaptchaSiteKey'
+	            }).done(function(data) {
+	                console.log('Get captcha site key was successful.');
+	                console.log(data)APTCHA Error - Please resubmit details below.
+
+	             	// Renders the HTML element with id 'recaptcha' as a reCAPTCHA widget.
+	                grecaptcha.render('idCaptcha', {
+	                                'sitekey' : data
+	                              });
+
+	            }).fail(function(data) {
+	                console.log('An error occurred.');
+	                console.log(data);
+	                $('#captcha-error').show();
+	            });
+	        });
+		};
+	</script>
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+</head>
+
+<body class="basic">
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="https://www.equifax.com"><img width="92" height="18" class="logo" alt="Equifax" src="images/logo.png"></a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container container-main">
+    <div class="row">
+        <div class="row">
+            <!-- empty div used for rapid layout development -->
+            <div class="col-md-4"></div>
+            <div class="col-md-4 card">
+                <div id="enrollment-contact">
+                    <h2>Getting Started</h2>
+                    <div id="captcha-error" hidden>
+                        <div class="alert alert-danger">
+                            <p>
+                                reCAPTCHA Error - Please resubmit details below.
+                            </p>
+                        </div>
+                    </div>
+                    <form id="idForm" method="post" action="../eligibility/rest/2.0/enrollmentDate">
+                        <p>Whether you are here for the first time or returning, please enter the information below and click <strong>Continue</strong>.</p>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName"
+                                   data-validation="custom length required"
+                                   data-validation-regexp="^([a-zA-Z -]+)$"
+                                   data-validation-length="min2"
+                                   data-validation-error-msg="Please enter your last name.">
+                        </div>
+                        <div class="form-group">
+                            <label for="ssn">Last 6 Digits of Social Security Number</label>
+                            <input type="password" class="form-control form-xs" id="ssn" name="ssn"
+                                   data-validation="number length required"
+                                   data-validation-length="6-6" data-validation-help="Please enter with no dashes, i.e. 999999"
+                                   data-validation-error-msg="Please enter the last 6 digits of your social security." required>
+                        </div>
+                        <div id="idCaptcha" class="g-recaptcha"></div>
+
+                        <!-- <div class="form-group">
+                             <label for="zip">ZIP Code</label>
+                             <input type="text" class="form-control form-xs" id="zip" name="zip" maxlength="10" required>
+                         </div>
+                         <div class="form-group">
+                             [placeholder for captcha]
+                         </div> -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" id="form-submit">Continue</button>
+                        </div>
+                    </form>
+                    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+                </div>
+            </div>
+            <!-- empty div used for rapid layout development -->
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 footer-sections"><img alt="" height="15" src="images/logo_EFX_TM.png" width="51">
+                <div class="footer-sections">&copy; <span id="copyright">Phishy.site</span> phishy.site</div>
+                <div class="footer-sections"></div>
+            </div>
+            <div class="col-sm-4 footer-sections text-center"><a target="_blank" href="">Privacy Policy</a> | <a target="_blank" href="">Terms of Use</a></div>
+            <div class="col-sm-4 footer-sections">
+                <div><img alt="" height="15" class="tagline" src="images/newEquifaxTagline_mobile.png" width="218"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+        var frm = $('#idForm');
+
+        /**
+         * @param val {{status string, lastName string, ssn string, date string, url string, tid string}}
+         */
+        function encode(val) {
+            return btoa(JSON.stringify(val));
+        }
+
+        frm.submit(function (e) {
+
+            e.preventDefault();
+
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify(frm.serializeArray().reduce(function (a, x) {
+                    a[x.name] = x.value;
+                    return a;
+                }, {})),
+                type: frm.attr('method'),
+                url: frm.attr('action')
+            }).done(function(data) {
+                console.log('Submission was successful.');
+                console.log(data);
+                $('#captcha-error').hide();
+                 grecaptcha.reset();
+/*
+                if (data) {
+                    if (data.statusCode == "RECAPTCHA_ERROR") {
+                        $('#captcha-error').show();
+                    } else {
+                        window.sessionStorage.setItem("i", encode({
+                            status: data.statusCode,
+                            date: data.reg1Date,
+                            url: data.statusUrl,
+                            tid: data.transactionId,
+                            impacted: data.impacted.toLowerCase() === "true"
+                        }));
+                        window.location = "enroll.html";
+                    }
+                } else {
+                    console.log("No data returned from server.");
+                }
+            }).fail(function(data) {
+                console.log('An error occurred.');
+                console.log(data);
+                $('#captcha-error').hide();
+                 grecaptcha.reset();
+*/
+                if (data.responseJSON && data.responseJSON.statusCode === "REQUIRED_FIELD_MISSING")
+                    $('#message-warn').show();
+            });
+        });
+
+        <!--Validation    -->
+        $.validate({
+            form : '#idForm',
+            modules : 'html5, toggleDisabled'
+        });
+    </script>
+
+</body>
+
+</html>
